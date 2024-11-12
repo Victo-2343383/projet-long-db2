@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulaire Flask</title>
+  </head>
+  <body>
+    <h1>Commandes en attente</h1>
+    <a href="/">revenir</a>
+    <div>
+      <ul>
+      {% for enreg in resultat %}
+        <li>
+          <p>{{enreg[0]}} | {{enreg[1]}}</p>
+          <form action="/processPost" method="post">
+            <input type="submit" value="Compléter">
+            <input type="text" name="action"  value="completion"    hidden>
+            <input type="text" name="index"   value="{{enreg[2]}}"  hidden>
+          </form>
+          <form action="/details" method="post">
+            <input type="submit" value="consulter">
+            <input type="text" name="id"   value="{{enreg[2]}}"  hidden>
+          </form>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+    <style>p{display: inline}</style>
+  </body>
+</html>

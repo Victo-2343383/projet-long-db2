@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulaire Flask</title>
+  </head>
+  <body>
+    <h1>Ajouter une commande</h1>
+    <a href="/">revenir</a>
+    <form action="/processPost" method="post">
+        <input type="text" name="action" value="ajouter" hidden>
+
+        <p>pizza</p>
+        <div class="div-pizza">
+            <label>croute</label>
+            <select name="croute" id="">
+                {% for croute in croutes %}
+                    <option value="{{croute[0]}}">{{croute[1]}}</option>
+                {% endfor %}
+            </select><br>
+            <label>sauce</label>
+            <select name="sauce" id="">
+                {% for sauce in sauces %}
+                    <option value="{{sauce[0]}}">{{sauce[1]}}</option>
+                {% endfor %}
+            </select><br>
+
+
+            {% for i in [1, 2, 3, 4] %}
+            <label>garniture #{{i}}</label>
+            <select name="garniture{{i}}" id="">
+                {% for garniture in garnitures %}
+                    <option value="{{garniture[0]}}">{{garniture[1]}}</option>
+                {% endfor %}
+            </select><br>
+            {% endfor %}
+        </div>
+        
+
+        <p>Client</p>
+            <label>nom</label>
+            <input type="text" name="nom"><br>
+
+            <label>adresse</label>
+            <input type="text" name="adresse"><br>
+
+            <label>Téléphone</label>
+            <input type="text" name="telephone"><br>
+
+        <input type="submit" value="Créer">
+    </form>
+    <style>div{margin-left: 5vh;}</style>
+  </body>
+</html>

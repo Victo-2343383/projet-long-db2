@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulaire Flask</title>
+  </head>
+  <body>
+    <h1>Détails de la commande</h1>
+    <a href="/consulter">revenir</a>
+    <ul>
+      <p>client</p>
+      <li>Nom : {{data[0][1]}}</li>
+      <li>Adresse : {{data[0][2]}}</li>
+      <li>Téléphone : {{data[0][3]}}</li>
+      <br>
+      <p>Commande</p>
+      <li>Croute : {{data[0][4]}}</li>
+      <li>Sauce : {{data[0][5]}}</li>
+
+      {% for garniture in garnitures %}
+          <li>Garniture : {{garniture[1]}}</li>
+      {% endfor %}
+    </ul>
+    <form action="/processPost" method="post">
+      <input type="text" name="action" value="completion" hidden>
+      <input type="text" name="index" value="{{data[0][0]}}" hidden>
+      <input type="submit" value="Compléter">
+    </form>
+  </body>
+</html>
